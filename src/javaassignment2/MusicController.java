@@ -13,6 +13,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -66,15 +67,38 @@ public class MusicController implements Initializable
     @FXML private Label radioButtonLabel;
     //This makes it so only one button can be selected
           private ToggleGroup radioToggleGroup;
-          
+         
     public void thirdButtonPushed()
     {
         if (this.radioToggleGroup.getSelectedToggle().equals(this.aRadioButton))
-            radioButtonLabel.setText("The Selected Item is A");
+            radioButtonLabel.setText("You listen to music 0 days a week");
         if (this.radioToggleGroup.getSelectedToggle().equals(this.bRadioButton))
-            radioButtonLabel.setText("The Selected Item is b");
+            radioButtonLabel.setText("You listen to music 1-4 days a week");
         if (this.radioToggleGroup.getSelectedToggle().equals(this.cRadioButton))
-            radioButtonLabel.setText("The Selected Item is c");
+            radioButtonLabel.setText("You listen to music 5-7 days a week");
+    }
+    
+    //This is for favourite song 
+    @FXML private TextField favSongTextField;
+    @FXML private TextField genreTextField;
+    
+    /**
+     * This method will create a contact and then display it in the console
+     */
+    public void createMusicInfoButtonPushed()
+    {     
+        try{
+            
+            MusicInfo newMusicInfo = new MusicInfo(this.favSongTextField.getText(),
+                                         this.genreTextField.getText(),
+                                            this.radioButtonLabel.getText());
+        
+            System.out.printf("Music Info: %s%n", newMusicInfo);
+        }
+        catch (IllegalArgumentException e)
+        {
+            System.err.println(e.getMessage());
+        }
     }
     
     @Override
@@ -85,7 +109,7 @@ public class MusicController implements Initializable
         
         //This is for Choice Box
         choiceBoxLabel.setText("");
-        choiceBox.getItems().add("Apples");
+        choiceBox.getItems().add("Appless");
         choiceBox.getItems().add("banana");
         choiceBox.getItems().add("Strawberrys");
         
