@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package javaassignment2;
 
 import org.junit.After;
@@ -11,7 +6,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-
 /**
  *
  * @author ryanm
@@ -50,7 +44,7 @@ public class MusicInfoTest {
     }
 
     /**
-     * Test of setFavSong method, of class MusicInfo.
+     * Test of setFavSongInvalid method, of class MusicInfo.
      */
     @Test
     public void testSetFavSongInvalid() {
@@ -77,7 +71,7 @@ public class MusicInfoTest {
     }
 
     /**
-     * Test of setGenre method, of class MusicInfo.
+     * Test of setGenreInvalid method, of class MusicInfo.
      */
     @Test
     public void testSetGenreInvalid() {
@@ -103,14 +97,14 @@ public class MusicInfoTest {
     }
 
     /**
-     * Test of setNumInstrumentPlayed method, of class MusicInfo.
+     * Test of setNumInstrumentPlayedInvalid method, of class MusicInfo.
      */
     @Test
     public void testSetNumInstrumentPlayedInvalid() {
-        int numInstrumentPlayed = -5;
+        int numInstrumentPlayed = 8;
         try{
             validMusicInfo.setNumInstrumentPlayed(numInstrumentPlayed);
-             fail("Number of Instrument cannot be empty");
+             fail("numInstrumentPlayed Must between 0 and 7");
         }
         catch (IllegalArgumentException e)
         {
@@ -123,9 +117,9 @@ public class MusicInfoTest {
      */
     @Test
     public void testToString() {
-         String expResult = "\nFavourite song is: Thriller\n"
-                + "Favourite Genre is: Rock\n"
-                + "Number of Instruments played: 3";
+         String expResult = "\nFavourite song is: Thriller\n "
+                + "Favourite Genre is: Rock\n "
+                + "Number of Instruments played: 3 ";
         String result = validMusicInfo.toString();
         assertEquals(expResult, result);
     }

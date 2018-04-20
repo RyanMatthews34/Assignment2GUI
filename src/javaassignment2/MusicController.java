@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package javaassignment2;
 
 import java.io.BufferedWriter;
@@ -31,15 +26,15 @@ public class MusicController implements Initializable
 
      //This is for favourite Genre (Choice Box)
      @FXML private ChoiceBox choiceBox;
-     
-           
+               
     //This is for favourite song (Text Field)
     @FXML private TextField favSongTextField;
     
     //This is for the # of Instrument Played(Spinner)
     @FXML private Spinner weekSpinner;
     /**
-     * This method will create a MusicInfo and then display it in the console
+     * This method will create a MusicInfo write it to text file
+     * then display it in the console
      * @throws java.io.IOException
      */
     public void createMusicInfoButtonPushed() throws IOException
@@ -77,7 +72,7 @@ public class MusicController implements Initializable
         imageView.setImage(new Image("bee.jpg"));
         
         //This is for the Spinner
-        SpinnerValueFactory<Integer> weekValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,7,4);
+        SpinnerValueFactory<Integer> weekValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,7);
         this.weekSpinner.setValueFactory(weekValueFactory);
         
         //set up a "clip" to apply a rounded border to the image
