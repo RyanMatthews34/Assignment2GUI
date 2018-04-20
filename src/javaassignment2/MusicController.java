@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
@@ -32,6 +33,8 @@ public class MusicController implements Initializable
     
     //This is for the # of Instrument Played(Spinner)
     @FXML private Spinner weekSpinner;
+    //This is the label to show errors
+    @FXML private Label errMsgLabel;
     /**
      * This method will create a MusicInfo write it to text file
      * then display it in the console
@@ -43,7 +46,7 @@ public class MusicController implements Initializable
             MusicInfo newMusicInfo = new MusicInfo(this.favSongTextField.getText(),
                                             this.choiceBox.getValue().toString(),
                                             (int) this.weekSpinner.getValue());
-                                          
+        this.errMsgLabel.setText("");
         BufferedWriter writer = new BufferedWriter(new FileWriter("MusicInfo.txt", true));
         writer.write(newMusicInfo.toString());
         writer.close();
@@ -52,6 +55,7 @@ public class MusicController implements Initializable
         catch (IllegalArgumentException e)
         {
             System.err.println(e.getMessage());
+            this.errMsgLabel.setText(e.getMessage());
         }
     }
     

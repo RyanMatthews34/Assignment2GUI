@@ -51,7 +51,7 @@ public class MusicInfoTest {
         String favSong = "";
         try{
             validMusicInfo.setFavSong(favSong);
-            fail("FavSong name cannot be empty");
+            fail("Favourite Song cannot be blank");
         }
         catch (IllegalArgumentException e)
         {
@@ -78,7 +78,7 @@ public class MusicInfoTest {
         String genre = "";
         try{
             validMusicInfo.setGenre(genre);
-            fail("Genre name cannot be empty");
+            fail("Favourite Genre cannot be blank");
         }
         catch (IllegalArgumentException e)
         {
@@ -104,7 +104,7 @@ public class MusicInfoTest {
         int numInstrumentPlayed = 8;
         try{
             validMusicInfo.setNumInstrumentPlayed(numInstrumentPlayed);
-             fail("numInstrumentPlayed Must between 0 and 7");
+             fail("Number of Instrument Played Must between 0 and 7");
         }
         catch (IllegalArgumentException e)
         {
