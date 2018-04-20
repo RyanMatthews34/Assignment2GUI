@@ -5,3 +5,9 @@ Number of Instruments played: 0
 Favourite song is: HelloWorld2
 Favourite Genre is: Pop
 Number of Instruments played: 7
+Favourite song is: HelloWorld
+Favourite Genre is: Rock
+Number of Instruments played: 2
+Favourite song is: s
+Favourite Genre is: Rock
+Number of Instruments played: 2

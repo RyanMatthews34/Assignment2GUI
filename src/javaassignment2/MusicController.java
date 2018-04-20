@@ -32,7 +32,7 @@ public class MusicController implements Initializable
     @FXML private TextField favSongTextField;
     
     //This is for the # of Instrument Played(Spinner)
-    @FXML private Spinner weekSpinner;
+    @FXML private Spinner numInstrumentOfSpinner;
     //This is the label to show errors
     @FXML private Label errMsgLabel;
     /**
@@ -45,7 +45,7 @@ public class MusicController implements Initializable
         try{           
             MusicInfo newMusicInfo = new MusicInfo(this.favSongTextField.getText(),
                                             this.choiceBox.getValue().toString(), 
-                                            (int) this.weekSpinner.getValue());
+                                            (int) this.numInstrumentOfSpinner.getValue());
         this.errMsgLabel.setText("");
         BufferedWriter writer = new BufferedWriter(new FileWriter("MusicInfo.txt", true));
         writer.write(newMusicInfo.toString());
@@ -74,8 +74,8 @@ public class MusicController implements Initializable
         imageView.setImage(new Image("bee.jpg"));
         
         //This is for the Spinner
-        SpinnerValueFactory<Integer> weekValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,7);
-        this.weekSpinner.setValueFactory(weekValueFactory);
+        SpinnerValueFactory<Integer> numValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,7);
+        this.numInstrumentOfSpinner.setValueFactory(numValueFactory);
         
         //set up a "clip" to apply a rounded border to the image
         Rectangle clip = new Rectangle(imageView.getFitWidth(), 
