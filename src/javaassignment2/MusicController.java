@@ -5,20 +5,20 @@
  */
 package javaassignment2;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
-
 /**
  * FXML Controller class
  *
@@ -26,74 +26,32 @@ import javafx.scene.shape.Rectangle;
  */
 public class MusicController implements Initializable 
 {
-    //This is for Check Box
-    @FXML private Label firstLabel;
-    @FXML private CheckBox checkBox1;
-    @FXML private CheckBox checkBox2;
-    @FXML private CheckBox checkBox3;
-    
-    //This is for the image
+     //This is for the image
      @FXML private ImageView imageView;
-    
-    
-    public void firstButtonPushed()
-    {
-        String order = "Toppings are:";
-        
-        if (checkBox1.isSelected())
-            order += "\n pineapple";
-        if (checkBox2.isSelected())
-            order += "\n banana";
-        if (checkBox3.isSelected())
-            order += "\n apple";
-        
-        this.firstLabel.setText(order);        
-    }
-    
+
      //This is for Choice Box
-        @FXML private ChoiceBox choiceBox;
-        @FXML private Label choiceBoxLabel;
-        
-    public void secondButtonPushed()
-    {
-        choiceBoxLabel.setText(choiceBox.getValue().toString());
-    }
-    
-    
-    //This is for the radio buttons
-    @FXML private RadioButton aRadioButton;
-    @FXML private RadioButton bRadioButton;
-    @FXML private RadioButton cRadioButton;
-    @FXML private Label radioButtonLabel;
-    //This makes it so only one button can be selected
-          private ToggleGroup radioToggleGroup;
-         
-    public void thirdButtonPushed()
-    {
-        if (this.radioToggleGroup.getSelectedToggle().equals(this.aRadioButton))
-            radioButtonLabel.setText("You listen to music 0 days a week");
-        if (this.radioToggleGroup.getSelectedToggle().equals(this.bRadioButton))
-            radioButtonLabel.setText("You listen to music 1-4 days a week");
-        if (this.radioToggleGroup.getSelectedToggle().equals(this.cRadioButton))
-            radioButtonLabel.setText("You listen to music 5-7 days a week");
-    }
-    
+     @FXML private ChoiceBox choiceBox;
+           
     //This is for favourite song 
     @FXML private TextField favSongTextField;
-    @FXML private TextField genreTextField;
     
+    //This is for the Spinner
+    @FXML private Spinner weekSpinner;
     /**
-     * This method will create a contact and then display it in the console
+     * This method will create a MusicInfo and then display it in the console
      */
-    public void createMusicInfoButtonPushed()
+    public void createMusicInfoButtonPushed() throws IOException
     {     
         try{
             
             MusicInfo newMusicInfo = new MusicInfo(this.favSongTextField.getText(),
-                                         this.genreTextField.getText(),
-                                            this.radioButtonLabel.getText());
-        
-            System.out.printf("Music Info: %s%n", newMusicInfo);
+                                            this.choiceBox.getValue().toString(),
+                                            (int) this.weekSpinner.getValue());
+                                          
+        BufferedWriter writer = new BufferedWriter(new FileWriter("MusicInfo.txt", true));
+        writer.write(newMusicInfo.toString());
+        writer.close();
+            System.out.printf("Music Info: %s %n", newMusicInfo);
         }
         catch (IllegalArgumentException e)
         {
@@ -104,21 +62,12 @@ public class MusicController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        //This is for checkBox
-        firstLabel.setText("memes");
-        
-        //This is for Choice Box
-        choiceBoxLabel.setText("");
-        choiceBox.getItems().add("Appless");
-        choiceBox.getItems().add("banana");
-        choiceBox.getItems().add("Strawberrys");
-        
-        //This is for Radio button
-        radioButtonLabel.setText("");
-        radioToggleGroup = new ToggleGroup();
-        this.aRadioButton.setToggleGroup(radioToggleGroup);
-        this.bRadioButton.setToggleGroup(radioToggleGroup);
-        this.cRadioButton.setToggleGroup(radioToggleGroup);
+        //This is for Choice Box     
+        choiceBox.getItems().add("Rock");
+        choiceBox.getItems().add("Country");
+        choiceBox.getItems().add("Pop");
+        choiceBox.getItems().add("Jazz");
+        choiceBox.getItems().add("Metal");             
         
         //This is for the image
         imageView.setImage(new Image("bee.jpg"));
@@ -129,5 +78,9 @@ public class MusicController implements Initializable
         clip.setArcWidth(60);
         clip.setArcHeight(60);
         imageView.setClip(clip);
+        
+        //This is for the Spinner
+        SpinnerValueFactory<Integer> weekValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,7,4);
+        this.weekSpinner.setValueFactory(weekValueFactory);
     }     
 }

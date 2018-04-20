@@ -10,13 +10,15 @@ package javaassignment2;
  * @author ryanm
  */
 public class MusicInfo {
-    private String favSong, genre, hourListen;
 
-    public MusicInfo(String favSong, String genre, String hourListen)
+    private String favSong, genre;
+    private int numInstrumentPlayed;
+
+    public MusicInfo(String favSong, String genre, int numInstrumentPlayed)
     {
         setFavSong(favSong);
         setGenre(genre);
-        setHourListen(hourListen);
+        setNumInstrumentPlayed(numInstrumentPlayed);
     }
 
     public String getFavSong() {
@@ -24,6 +26,9 @@ public class MusicInfo {
     }
 
     public void setFavSong(String favSong) {
+        if (favSong.isEmpty())
+            throw new IllegalArgumentException("Favourite Song cannot be blank");
+        else
         this.favSong = favSong;
     }
 
@@ -32,19 +37,28 @@ public class MusicInfo {
     }
 
     public void setGenre(String genre) {
+        if (genre.isEmpty())
+            throw new IllegalArgumentException("genre Song cannot be blank");
+        else
         this.genre = genre;
     }
 
-    public String getHourListen() {
-        return hourListen;
+    public int getNumInstrumentPlayed() {
+        return numInstrumentPlayed;
     }
 
-    public void setHourListen(String hourListen) {
-        this.hourListen = hourListen;
+    public void setNumInstrumentPlayed(int numInstrumentPlayed) {
+        if (numInstrumentPlayed < -1)
+            throw new IllegalArgumentException("numInstrumentPlayed Must be greater than 0");
+        else
+        this.numInstrumentPlayed = numInstrumentPlayed;
     }
     
-    public String toString()
-    {
-        return String.format(" Favourite song is: %s and %s and %s", this.favSong, this.genre, this.hourListen);
+    @Override
+    public String toString() {
+        return String.format("Favourite song is: %s %n"
+                + "Favourite Genre is: %s %n"
+                + "Number of Instruments played: %s %n",
+                this.favSong, this.genre, this.numInstrumentPlayed);
     }
 }
