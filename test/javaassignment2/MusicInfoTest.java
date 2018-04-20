@@ -101,7 +101,7 @@ public class MusicInfoTest {
      */
     @Test
     public void testSetNumInstrumentPlayedInvalid() {
-        int numInstrumentPlayed = 8;
+        int numInstrumentPlayed = -8;
         try{
             validMusicInfo.setNumInstrumentPlayed(numInstrumentPlayed);
              fail("Number of Instruments Played Must between 0 and 7");
