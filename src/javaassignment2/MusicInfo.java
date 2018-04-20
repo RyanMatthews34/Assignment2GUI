@@ -38,7 +38,7 @@ public class MusicInfo {
 
     public void setGenre(String genre) {
         if (genre.isEmpty())
-            throw new IllegalArgumentException("genre Song cannot be blank");
+            throw new IllegalArgumentException("genre cannot be blank");
         else
         this.genre = genre;
     }
@@ -49,16 +49,16 @@ public class MusicInfo {
 
     public void setNumInstrumentPlayed(int numInstrumentPlayed) {
         if (numInstrumentPlayed < -1)
-            throw new IllegalArgumentException("numInstrumentPlayed Must be greater than 0");
+            throw new IllegalArgumentException("numInstrumentPlayed Must be 0 or greater");
         else
         this.numInstrumentPlayed = numInstrumentPlayed;
     }
     
     @Override
     public String toString() {
-        return String.format("Favourite song is: %s %n"
-                + "Favourite Genre is: %s %n"
-                + "Number of Instruments played: %s %n",
+        return String.format("\nFavourite song is: %s\n"
+                + "Favourite Genre is: %s\n"
+                + "Number of Instruments played: %s",
                 this.favSong, this.genre, this.numInstrumentPlayed);
     }
 }

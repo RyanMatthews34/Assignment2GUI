@@ -107,7 +107,7 @@ public class MusicInfoTest {
      */
     @Test
     public void testSetNumInstrumentPlayedInvalid() {
-        int numInstrumentPlayed = -1;
+        int numInstrumentPlayed = -5;
         try{
             validMusicInfo.setNumInstrumentPlayed(numInstrumentPlayed);
              fail("Number of Instrument cannot be empty");
@@ -123,7 +123,9 @@ public class MusicInfoTest {
      */
     @Test
     public void testToString() {
-         String expResult = "Favourite song is: Thriller %nFavourite Genre is: Rock %nNumber of Instruments played: 3 %n";
+         String expResult = "\nFavourite song is: Thriller\n"
+                + "Favourite Genre is: Rock\n"
+                + "Number of Instruments played: 3";
         String result = validMusicInfo.toString();
         assertEquals(expResult, result);
     }

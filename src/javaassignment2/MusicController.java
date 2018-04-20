@@ -29,21 +29,22 @@ public class MusicController implements Initializable
      //This is for the image
      @FXML private ImageView imageView;
 
-     //This is for Choice Box
+     //This is for favourite Genre (Choice Box)
      @FXML private ChoiceBox choiceBox;
+     
            
-    //This is for favourite song 
+    //This is for favourite song (Text Field)
     @FXML private TextField favSongTextField;
     
-    //This is for the Spinner
+    //This is for the # of Instrument Played(Spinner)
     @FXML private Spinner weekSpinner;
     /**
      * This method will create a MusicInfo and then display it in the console
+     * @throws java.io.IOException
      */
     public void createMusicInfoButtonPushed() throws IOException
     {     
-        try{
-            
+        try{           
             MusicInfo newMusicInfo = new MusicInfo(this.favSongTextField.getText(),
                                             this.choiceBox.getValue().toString(),
                                             (int) this.weekSpinner.getValue());
@@ -62,7 +63,10 @@ public class MusicController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        //This is for Choice Box     
+        //This is for Choice Box 
+        //choiceBox.getSelectionModel().selectFirst();
+        choiceBox.setValue("");
+        choiceBox.getItems().add("");
         choiceBox.getItems().add("Rock");
         choiceBox.getItems().add("Country");
         choiceBox.getItems().add("Pop");
@@ -72,15 +76,15 @@ public class MusicController implements Initializable
         //This is for the image
         imageView.setImage(new Image("bee.jpg"));
         
-        //set up a "clip" to apply a rounded border to the image
-        Rectangle clip = new Rectangle(imageView.getFitWidth(), 
-                                       imageView.getFitHeight());
-        clip.setArcWidth(60);
-        clip.setArcHeight(60);
-        imageView.setClip(clip);
-        
         //This is for the Spinner
         SpinnerValueFactory<Integer> weekValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,7,4);
         this.weekSpinner.setValueFactory(weekValueFactory);
+        
+        //set up a "clip" to apply a rounded border to the image
+        Rectangle clip = new Rectangle(imageView.getFitWidth(), 
+                                       imageView.getFitHeight());
+        clip.setArcWidth(90);
+        clip.setArcHeight(90);
+        imageView.setClip(clip);           
     }     
 }
