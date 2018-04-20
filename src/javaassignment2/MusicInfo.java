@@ -48,16 +48,16 @@ public class MusicInfo {
 
     public void setNumInstrumentPlayed(int numInstrumentPlayed) {
         if (numInstrumentPlayed > 7 && numInstrumentPlayed < 0 )
-            throw new IllegalArgumentException("Number of Instrument Played Must between 0 and 7");
+            throw new IllegalArgumentException("Number of Instruments Played Must between 0 and 7");
         else
         this.numInstrumentPlayed = numInstrumentPlayed;
     }
     
     @Override
     public String toString() {
-        return String.format("\nFavourite song is: %s\n "
-                + "Favourite Genre is: %s\n "
-                + "Number of Instruments played: %s ",
+        return String.format("\nFavourite song is: %s\n"
+                + "Favourite Genre is: %s\n"
+                + "Number of Instruments played: %s",
                 this.favSong, this.genre, this.numInstrumentPlayed);
     }
 }

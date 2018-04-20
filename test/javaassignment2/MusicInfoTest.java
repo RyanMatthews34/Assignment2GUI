@@ -104,7 +104,7 @@ public class MusicInfoTest {
         int numInstrumentPlayed = 8;
         try{
             validMusicInfo.setNumInstrumentPlayed(numInstrumentPlayed);
-             fail("Number of Instrument Played Must between 0 and 7");
+             fail("Number of Instruments Played Must between 0 and 7");
         }
         catch (IllegalArgumentException e)
         {
@@ -117,9 +117,9 @@ public class MusicInfoTest {
      */
     @Test
     public void testToString() {
-         String expResult = "\nFavourite song is: Thriller\n "
-                + "Favourite Genre is: Rock\n "
-                + "Number of Instruments played: 3 ";
+         String expResult = "\nFavourite song is: Thriller\n"
+                + "Favourite Genre is: Rock\n"
+                + "Number of Instruments played: 3";
         String result = validMusicInfo.toString();
         assertEquals(expResult, result);
     }

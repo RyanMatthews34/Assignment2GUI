@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 /**
  *
  * @author ryanm
@@ -27,5 +26,4 @@ public class LaunchMusicGUI extends Application
         primaryStage.setTitle("Music is Awesome");
         primaryStage.show();
     }
-    
 }

@@ -44,7 +44,7 @@ public class MusicController implements Initializable
     {     
         try{           
             MusicInfo newMusicInfo = new MusicInfo(this.favSongTextField.getText(),
-                                            this.choiceBox.getValue().toString(),
+                                            this.choiceBox.getValue().toString(), 
                                             (int) this.weekSpinner.getValue());
         this.errMsgLabel.setText("");
         BufferedWriter writer = new BufferedWriter(new FileWriter("MusicInfo.txt", true));
@@ -62,10 +62,8 @@ public class MusicController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        //This is for Choice Box 
-        //choiceBox.getSelectionModel().selectFirst();
-        choiceBox.setValue("");
-        choiceBox.getItems().add("");
+        //This is for Choice Box        
+        choiceBox.setValue("");       
         choiceBox.getItems().add("Rock");
         choiceBox.getItems().add("Country");
         choiceBox.getItems().add("Pop");
