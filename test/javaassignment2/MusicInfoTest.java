@@ -102,11 +102,10 @@ public class MusicInfoTest {
     @Test
     public void testSetNumInstrumentPlayedInvalid() {
         int numInstrumentPlayed = -8;
-        try{
-            validMusicInfo.setNumInstrumentPlayed(numInstrumentPlayed);
-             fail("Number of Instruments Played Must between 0 and 7");
+        try{           
+            fail("Number of Instruments Played Must between 0 and 7");
         }
-        catch (IllegalArgumentException e)
+        catch(IllegalArgumentException e)
         {
             System.out.println(e);
         }
